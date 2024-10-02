@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div id="toast-container" class="fixed top-4 end-4 z-50 w-64"></div>
+
+<div class="p-16 sm:ml-64 mt-6 bg-[#F5F5F6]">
+
+  <app-toaster [message]="message" [type]="messageType"></app-toaster>
+
+    <div class="mt-8 code-example">
+      <div class="w-full p-4 border border-gray-200 bg-gray-50 rounded-t-xl dark:border-gray-600 dark:bg-gray-700">
+        <div class="grid grid-cols-3">
+          <div class="col-span-2 sm:col-span-1">
+            <h4 class="text-2xl font-bold dark:text-white">Create initiative</h4>
+          </div>
+        </div>
+      </div>
+  
+      <div class="code-preview-wrapper">
+        <div id="card-pricing-example"
+          class="flex p-0 bg-white border-gray-200 bg-gradient-to-r code-preview dark:bg-gray-900 border-x dark:border-gray-600">
+          <div class="w-full code-responsive-wrapper">
+            <section class="m-4">
+              <div class="w-full">
+                <form [formGroup]="initiativeForm" (click)="createInitiative()">
+                  <div class="grid gap-6 mb-6 md:grid-cols-1">
+                    <div>
+                      <label for="company_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Initiative name</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                id="label" type="text" formControlName="initiativeName" placeholder="Enter the initiative name" />          
+                      <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="formControl.initiativeName.touched && formControl.initiativeName.invalid">Initiative name name is required</p>
+                    </div>
+                    <div>
+                      <label for="agent_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start date</label> 
+                      <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                          </svg>
+                        </div>
+                        <input datepicker id="default-datepicker" type="datetime-local" formControlName="startDate" class="bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                      </div>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="formControl.startDate.touched && formControl.startDate.invalid">Start date is required</p>
+                    </div>
+                    <div>
+                      <label for="agent_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End date</label>
+                      <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                          </svg>
+                        </div>
+                        <input datepicker id="default-datepicker" type="datetime-local" formControlName="endDate" class="bg-gray-50 border border-gray-300 cursor-pointer text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                      </div>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="formControl.endDate.touched && formControl.endDate.invalid">End  date is required</p>
+                    </div>
+                    <div>
+                      <label for="agent_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Identifier</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                id="label" type="text" formControlName="identifier" placeholder="Enter the identifier" />
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="formControl.identifier.touched && formControl.identifier.invalid">Identifier is required</p>
+                    </div>
+                    <div>
+                      <label for="agent_name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Wallet address</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                id="label" type="text" formControlName="walletAddress" placeholder="Enter the wallet address" />
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="formControl.walletAddress.touched && formControl.walletAddress.invalid">Wallet address is required</p>
+                    </div>
+                  </div>
+                  <button type="submit"
+                    class="flex gap-2 items-center justify-center text-white bg-cyan-700 hover:bg-cyan-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                    [ngClass]="{
+                      'text-white bg-[#f39c12] hover:bg-[#d68910]': initiativeForm.valid,
+                      'bg-gray-300 text-gray-500 cursor-not-allowed': initiativeForm.invalid }">
+                    <span >Submit</span>
+                  </button>
+                  <!-- <button type="submit" class="flex gap-2 items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                    <span >Submit</span>
+                  </button> -->
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="code-syntax-wrapper">
+        <div class="relative border-gray-200 border-y border-x code-syntax dark:border-gray-600"></div>
+      </div>
+    </div>
+  </div>
